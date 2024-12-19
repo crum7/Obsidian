@@ -1,1 +1,8 @@
-{}
+{
+  "showRibbon": true,
+  "spellcheck": false,
+  "autoPairBrackets": false,
+  "promptDelete": false,
+  "newFileLocation": "current",
+  "showUnsupportedFiles": false
+}
