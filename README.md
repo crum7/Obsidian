@@ -18,38 +18,9 @@ HackTheBoxやTryHackMeの学習メモ、チートシートなどを中心に構�
     ペネトレーションテストやセキュリティ関連の便利なチートシートをまとめています。  
     例: コマンドリスト、ツールの使い方、脆弱性の調査方法など。
     
-
----
-
-## 🚀 セットアップ方法
-
-### 1. リポジトリのクローン
-
-このリポジトリをローカル環境にクローンします。
-
-```bash
-git clone https://github.com/username/obsidian-pentest.git
-cd obsidian-pentest
-```
-
-### 2. Obsidianのワークスペースにリンク
-
-1. Obsidianで、新規Vaultを作成または既存のVaultを開きます。
-2. このリポジトリの内容をVaultのフォルダにコピーします。
-
----
-
-## 🛠 主な使い方
-
-- **HackTheBox_Writeup**  
-    マシンごとのWriteupをフォルダ分けして管理します。たとえば、`HackTheBox_Writeup/<Machine_Name>.md`のように作成すると整理しやすくなります。
-    
-- **TryHackMe_Memo**  
-    TryHackMeの学習メモをカテゴリごとに整理してください。タグを活用することで効率的に検索できます。
-    
-- **Pentest_Cheat_Sheet**  
-    頻繁に使用するコマンドやツールをこのフォルダに保存し、すばやく参照可能にします。たとえば、以下のようなセクションを含むと便利です
-
+## 前回まで
+- 一部,旧scrapboxに情報はありますが、こちらの方がバージョンは新しいです。
+- https://scrapbox.io/tadanomemo777/
 ---
 
 ## 📂 ディレクトリ構成
