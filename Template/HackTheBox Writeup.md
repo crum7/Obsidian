@@ -1,7 +1,6 @@
 
 ![HTB Banner](https://github.com/hackthebox/writeup-templates/blob/master/machine/assets/images/banner.png?raw=true)
 
-# Machine Name
 
 - URL : 
 - #easy #medium #hard #insane
@@ -13,6 +12,31 @@
 
 # Enumeration
 <ここに情報収集に関する内容を書いてください>
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+
 
 - **Tactics**:
     - #Tactic_情報収集
@@ -30,6 +54,26 @@
 
 # Foothold
 <最初の侵入ポイントをここに書いてください>
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
 
 - **Tactics**:
     - #Tactic_初期アクセス
@@ -46,6 +90,27 @@
 
 # Lateral Movement
 <横方向の動きに関する説明をここに書いてください>
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+
 
 - **Tactics**:
     - #Tactic_横移動
@@ -60,6 +125,35 @@
 
 # Privilege Escalation
 <特権昇格の詳細をここに記載してください>
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+```bash
+
+```
+
+
 
 - **Tactics**:
     - #Tactic_特権昇格
