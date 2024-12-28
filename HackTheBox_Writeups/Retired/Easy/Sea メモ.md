@@ -5,7 +5,7 @@
 - URL : 
 - #easy 
 - OS : #Linux 
-- Machine Author(s): 
+- Machine Author(s): [FisMatHack](https://app.hackthebox.com/users/1076236)
 - Hack Date: 2024-12-28,01:36
 
 ---
@@ -393,3 +393,8 @@ root@sea:~/monitoring# exit
 
 - www-dataは、 Apache サーバーの Web 管理者として、`/var/www`にアクセスできる。
 - ハッシュをjohnで解析するときは、ハッシュの中の/がエスケープ(\/)を外すのが重要。
+
+## 参考文献
+引用していない参考文献
+- [# Beginner’s Guide to Conquering Sea on HackTheBox](https://thecybersecguru.com/ctf-walkthroughs/mastering-sea-beginners-guide-from-hackthebox/)
+- [# 【HackTheBox】Sea：Writeup](https://qiita.com/kk0128/items/200edf02b2f460f01e9e?utm_campaign=post_article&utm_medium=twitter&utm_source=twitter_share)
