@@ -2,7 +2,7 @@
 - ここのリストを上から全部解いていく
 - 解いたものは取り消し線引いていく
 
-- Sea
+- ~~Sea~~
 - GreenHorn
 - PermX
 - Editorial
