@@ -3,7 +3,7 @@
 - 解いたものは取り消し線引いていく
 
 - ~~Sea~~
-- GreenHorn
+- ~~GreenHorn~~
 - PermX
 - Editorial
 - BoardLight
