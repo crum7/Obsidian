@@ -40,7 +40,8 @@ http://Editorial.htb [200 OK] Bootstrap, Country[RESERVED][ZZ], HTML5, HTTPServe
 ```
 
 これは、fileアップロードして、リバースシェルとかできるのかな
-![[Pasted image 20250129234628.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Editional/images/Pasted%20image%2020250129234628.png)
+
 
 なんか検索欄とかにsqlインジェクション送ると、cssが崩れるから、burpsuiteで、細かく見る
 と思ったら、他の単語入れた時もおんなじ挙動するからただのcssの遅れで、sqlインジェクションしたからとかは関係なさそう
@@ -69,7 +70,7 @@ dirsearchでも
 
 なんか、ファイルをプレビューする機能がある。
 pingでは、こんな感じで花の写真が出てくる。
-![[Pasted image 20250130000830.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Editional/images/Pasted%20image%2020250130000830.png)
 ```bash
 
 ```
@@ -105,7 +106,7 @@ https://github.com/M507/CVE-2021-23017-PoC
 SSRFの脆弱性を利用する
 ![](https://i.imgur.com/jyQXbCc.png)
 
-![[Pasted image 20250129234628.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Editional/images/Pasted%20image%2020250129234628.png)
 ```bash
 
 ```

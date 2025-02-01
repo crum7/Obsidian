@@ -1,4 +1,4 @@
-![[Generic-Banner.svg]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/TryHackMe_Memo/Machine/images/Generic-Banner.svg)
 
 - URL : https://tryhackme.com/r/room/blue
 - #easy 
@@ -208,7 +208,7 @@ Jon:1000:aad3b435b51404eeaad3b435b51404ee:ffb43f0de35be4d9917ac0cc8ad57f8d:::
 
 ```
 
-![[Pasted image 20250102210525.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/TryHackMe_Memo/Machine/images/Pasted%20image%2020250102210525.png)
 
 
 ---

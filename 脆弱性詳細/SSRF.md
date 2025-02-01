@@ -182,8 +182,8 @@ http://attacker-controlled-domain.com/
 Burp SuiteのIntruderを使って、すべてのポートで試す
 こんな感じで、該当部分をIntruderに送って、画像内の80の部分を「1~65535」で探す。
 (*なんかFreeバージョンだと制限かかって動かなそう)
-![[Pasted image 20250130145732.png]]
-![[Pasted image 20250130145941.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/%E8%84%86%E5%BC%B1%E6%80%A7%E8%A9%B3%E7%B4%B0/images/Pasted%20image%2020250130145732.png)
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/%E8%84%86%E5%BC%B1%E6%80%A7%E8%A9%B3%E7%B4%B0/images/Pasted%20image%2020250130145941.png)
 
 (なんかFreeバージョンだと制限かかって動かなそう)
 pythonで同じことをする

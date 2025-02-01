@@ -86,7 +86,7 @@ feroxbuster
 dirbuster
 robots.txtにアクセス出来る。
 /data/・/docs/にはアクセスして欲しくなさそう
-![[Pasted image 20241229171606.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020241229171606.png)
 ```bash
 └──╼ [★]$ sudo dirsearch --url=http://greenhorn.htb
 
@@ -152,7 +152,7 @@ Task Completed
 ```
 
 いくつか、ディレクトラバーサルなどのwebリンクが見つかったので、アクセスするも、こんな文章が表示される
-![[Pasted image 20241229171035.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020241229171035.png)
 
 
 ```bash
@@ -196,7 +196,7 @@ ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top10000
 
 /login.phpで、このサイトが、pluck cms 4.7.18を利用していることがわかる。
 - https://github.com/pluck-cms/pluck
-![[Pasted image 20241229173129.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020241229173129.png)
 
 - 脆弱性があるのかなと思って調べたが、Pluck CMS 4.7.18の脆弱性はなさそう？
 ```bash
@@ -229,7 +229,7 @@ Shellcodes: No Results
 
 - いや、Pluckは、Pluck CMSを指してるらしい
 	- Pluck v4.7.18 - Remote Code Execution (RCE)  を試してみる
- ![[Pasted image 20241229180356.png]]
+ ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020241229180356.png)
 
 PoCをミラーダウンロードする
 ```bash
@@ -264,7 +264,7 @@ Wiki内で
 `http://greenhorn.htb/?file=welcome-to-greenhorn....//....//....//....//data/settings/pass.php`
 
 このサーバーは、3000番からアクセスできる。
-![[Pasted image 20250102124547.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020250102124547.png)
 johnで解析する。
 ハッシュのパスワードが「iloveyou1」であることがわかった。
 ```sh
@@ -335,7 +335,7 @@ Password: iloveyou1
 # Privilege Escalation
 
 juiorの/homeの中にuser.txtの他にもpdfファイルがあったのでみてみる。
-![[Pasted image 20250102181441.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/GreenHorn/images/Pasted%20image%2020250102181441.png)
 
 文字のところを複合する
 

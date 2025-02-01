@@ -17,7 +17,7 @@
 	- 管理者用画面、sshはログインかかる
 		- 気になる人は64294、64295、64297番にファイアーウォールする
 	- このルール以外は削除する
-	- ![[Pasted image 20241231205736.png]]
+	- ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231205736.png)
 
 ## Compute Engineの設定
 - Compute Engine → VMインスタンス
@@ -33,10 +33,10 @@
 - ストレージ:256GB
 - ネットワーキング→ネットワークタグ
 	- default
-![[Pasted image 20241231213818.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231213818.png)
 
 作ったVMインスタンスにSSHで接続する
-![[Pasted image 20241231214445.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231214445.png)
 
 
 VMに接続して、T-Potをインストール
@@ -76,7 +76,7 @@ sudo reboot
 ```
 
 管理用のsshのポートが22番から、T-Potによって64295番に変更されてるので、「ブラウザウィンドウでカスタムポートを開く」で64295番を指定する
-![[Pasted image 20241231220134.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231220134.png)
 
 T-Potは再起動後に自動的に起動するので、上手くいっているかを確認する
 ```bash
@@ -161,18 +161,18 @@ sudo systemctl restart tpot
 
 [http://<VMの外部IP>:64297/]にアクセスすると、T-Podの管理画面にアクセスできる。
 結構見ていると、T-Podにアクセス飛んできているの見れて楽しい。
-![[Pasted image 20241231230745.png]]![[Pasted image 20241231231424.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231230745.png)![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020241231231424.png)
 
 
 ## 30日間でデータが消えないようにするために
 T-Pot → Kibana → # Stack Management → Index Lifecycle Policies
 以下の写真の右の「Include managed system policies」ボタンをオンにする。
-![[Pasted image 20250101214023.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020250101214023.png)
 
 tpotを探してクリック
 右下のManageボタンをクリック→Edit
-![[Pasted image 20250101214508.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020250101214508.png)
 
 画像のようにCold Phaseをオンにして、「Move data into phase when:30 days old」に設定
 Save Policy
-![[Pasted image 20250101214208.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HoneyPot/images/Pasted%20image%2020250101214208.png)

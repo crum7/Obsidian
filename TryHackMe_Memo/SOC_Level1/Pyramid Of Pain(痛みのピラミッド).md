@@ -1,5 +1,5 @@
 
-![[Pasted image 20241229102736.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/TryHackMe_Memo/SOC_Level1/images/Pasted%20image%2020241229102736.png)
 痛みのピラミッドとは
 - セキュリティ専門家の「David J Bianco」氏が2013年に提唱した[概念モデル](https://codebook.machinarecord.com/threat-intelligence/16581/#reference)
 	- セキュリティ対策の効果と攻撃者に対してどれだけダメージが与えられるかを示した図

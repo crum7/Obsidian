@@ -61,7 +61,7 @@ CSRF(Cross-Site Request Forgeries)とXSSの違い
 			- https://gist.github.com/stevegrunwell/4a8f1990972b3570b3e423533b318aac
 			-  ~~この脆弱性はtentenにはありませんって言ってるけど、ほんとなのか？~~
 				- 本当でした。GUIで同じようなことしたら、email()関数？がないからメールを送れないとのこと。
-				- ![[Pasted image 20241226224948.png]]
+				- ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Medium/TenTen/images/Pasted%20image%2020241226224948.png)
 		- PoC?
 			- https://github.com/cyberheartmi9/CVE-2017-8295
 			- 認証されていない攻撃者により、'wp_lang' パラメータを介して、任意の翻訳ファイルにアクセスして読み込まれる可能性があります。
@@ -167,7 +167,7 @@ CVE-2015-6668
 お馴染みのディレクトリスキャンと、ffufでサブドメインを洗い出す
 - ディレクトリスキャンの/.sudo_as_admin_successfulという怪しい隠しファイルの中に`Cookie: wordpress_test_cookie=WP+Cookie+check`というのが入ってるけど、デフォルトっぽい？
 	https://www.walbrix.co.jp/article/wordpress-test-cookie-httponly.html
-	- ![[Pasted image 20241226232231.png]]
+	- ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Medium/TenTen/images/Pasted%20image%2020241226232231.png)
 ```bash
 └──╼ [★]$ dirsearch -u tenten.htb -t 50 -i 200
 
@@ -236,7 +236,7 @@ Enter a file name: HackerAccessGranted
 [+] URL of CV found! http://tenten.htb/wp-content/uploads/2017/04/HackerAccessGranted.jpg
 
 ```
-![[Pasted image 20241227111917.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Medium/TenTen/images/Pasted%20image%2020241227111917.png)
 
 ステガノグラフィーかもしれないので、どのような情報が含まれているのかをみる。
 秘密鍵が含まれているらしい。

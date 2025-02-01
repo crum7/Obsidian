@@ -42,7 +42,7 @@ http://permx.htb [200 OK] Apache[2.4.52], Bootstrap, Country[RESERVED][ZZ], Emai
 割とリッチなサイト
 カーソル当てると、ズームとかする感じ
 eLEARNINGという名前のサイト
-![[Pasted image 20250103113531.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103113531.png)
 
 まず、index.htmlのコメントやソースをざっくり眺める。
 サイトで脆弱性の特定で気になったところ
@@ -57,10 +57,10 @@ eLEARNINGという名前のサイト
     <script src="lib/waypoints/waypoints.min.js"></script>
     <script src="lib/owlcarousel/owl.carousel.min.js"></script>
 
-![[Pasted image 20250103114230.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103114230.png)
 
 ここのSend Messageは、本当に送ってるのか。Burp Suiteで見る。
-![[Pasted image 20250103114425.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103114425.png)
 右側のSend Message : 適当にそれぞれを埋めて、Send Messageを押してもBurp Suiteでは送ったメッセージがないから、送られてなさそう？
 Get In Touchのところに書いてあった
 ```text
@@ -78,7 +78,7 @@ AjaxとPHPを使用して、数分で機能するコンタクトフォームを�
 大半は、普通のだけど、301の部分が気になる。
 301の中の1つはこんな感じだった。
 [http://permx.htb/lib/]でアクセスできる
-![[Pasted image 20250103115300.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103115300.png)
 ```bash
 feroxbuster -u http://permx.htb
 301      GET        9l       28w      304c http://permx.htb/lib => http://permx.htb/lib/
@@ -159,7 +159,7 @@ wwwとlmsが見つかった。
 		- ユーザーがWebベースのオンライン学習アプリを作成できる無料のeラーニングツール
 		- 軽量で適応性のあるオープンソースのeラーニングプラットフォーム
 		- E-Learningが云々と言っていたwww.permx.htbの生徒とか教員が使用するのかな。
-- ![[Pasted image 20250103120826.png]]
+- ![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103120826.png)
 ```bash
 ffuf -w /usr/share/wordlists/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://permx.htb -H "Host: FUZZ.permx.htb" -mc 200
 www                     [Status: 200, Size: 36182, Words: 12829, Lines: 587, Duration: 9ms]
@@ -231,7 +231,7 @@ Task Completed
 ```
 
 そういえば、ログインの下に「I lost my password」があるが、こんな表示になって、「Davis Miller」のリンクをクリックするとメールソフトが開いて、`admin@permx.htb`というアカウントに送るようになっている。
-![[Pasted image 20250103124647.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103124647.png)
 
 バージョンがChamilo 1.11.xであると分かったので、改めて、searchsploitで脆弱性が見つかるか
 ```bash
@@ -427,7 +427,7 @@ MariaDB [chamilo]> SELECT * FROM user LIMIT 10;
 adminのアカウントのパスワードを書き換えることにする。
 まず、何でハッシュ化されているのかわからないので、[https://www.tunnelsup.com/hash-analyzer/]で8種の種類を調べる。
 bcryptだったので、[https://bcrypt-generator.com/]でbcryptしたハッシュを使うことにする
-![[Pasted image 20250103150646.png]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/HackTheBox_Writeups/Retired/Easy/PermX/images/Pasted%20image%2020250103150646.png)
 
 ユーザー名/パスワードで新しい、adminアカウントを作る。
 newadmin/password

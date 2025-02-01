@@ -1,5 +1,5 @@
 
-![[Generic-Banner.svg]]
+![](https://raw.githubusercontent.com/crum7/Obsidian/main/Template/images/Generic-Banner.svg)
 
 - URL : 
 - #easy #medium #hard #insane
