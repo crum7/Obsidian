@@ -4,7 +4,7 @@
 
 - ~~Sea~~
 - ~~GreenHorn~~
-- PermX
+- ~~PermX~~
 - Editorial
 - BoardLight
 - Mailing

@@ -10,7 +10,7 @@ HackTheBoxやTryHackMeの学習メモ、チートシートなどを中心に構�
 
 - **`HackTheBox_Writeup/`**  
     HackTheBoxで取り組んだマシンやチャレンジのWriteup（解答・メモ）を管理します。
-    
+    フラグまでの最短経路の綺麗なwriteupではなく、自分が実際に行なっていること、気づき、流れをそのまま書いています。
 - **`TryHackMe_Memo/`**  
     TryHackMeで学んだ内容やチャレンジのメモを保存します。
     

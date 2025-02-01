@@ -11,6 +11,7 @@
 ---
 
 # Enumeration
+使用ツールのオプションが定型化してきてきたのでこの[スクリプト](https://github.com/crum7/HTBScript/blob/main/Enumeration.sh)を使用している
 どのポートが空いている?
 ```bash
 
