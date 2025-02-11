@@ -5,7 +5,7 @@
 - ~~Sea~~
 - ~~GreenHorn~~
 - ~~PermX~~
-- Editorial
+- ~~Editorial~~
 - BoardLight
 - Mailing
 - Usage

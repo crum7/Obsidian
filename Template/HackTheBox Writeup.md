@@ -12,26 +12,57 @@
 
 # Enumeration
 使用ツールのオプションが定型化してきてきたのでこの[スクリプト](https://github.com/crum7/HTBScript/blob/main/Enumeration.sh)を使用している
+
 どのポートが空いている?
+-  番
+-  番
+
+| ポート | サービス | バージョン | その他 |
+| --- | ---- | ----- | --- |
+|     |      |       |     |
+
+## nmap
 ```bash
 
 ```
 
+## whatweb
 ```bash
 
 ```
 
+## Feroxbuster
 ```bash
 
 ```
 
+## Dirsearch
 ```bash
 
 ```
 
+## FFUF
 ```bash
 
 ```
+
+## WebSite
+- 
+- 
+- 
+## WebSite Screenshot
+
+
+## Wappalyzer
+新規情報
+- 
+- 
+
+
+## チェックリスト
+- [ ] x
+- [ ] x
+- [ ] x
 
 ```bash
 
